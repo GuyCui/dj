@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马仔音乐台 DJ点歌</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="logo">
+                <div class="avatar"><i class="fas fa-headphones"></i></div>
+                <h1>马仔音乐台</h1>
+            </div>
+            <div class="controls">
+                <div class="theme-toggle">
+                    <button class="btn btn-dark active">暗色</button>
+                    <button class="btn btn-light">亮色</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- 左右布局容器 -->
+        <div class="main-content">
+            <!-- 左侧内容 -->
+            <div class="left-panel">
+                <!-- 时钟部分 -->
+                <section class="clock-section">
+                    <div class="digital-clock" id="clock">21:11</div>
+                    <div class="date-info" id="date-info">
+                        <div class="day">星期一</div>
+                        <div class="date">20-4月-2026</div>
+                    </div>
+                    <div class="status-indicator">
+                        <span class="dot"></span> 直播中
+                    </div>
+                </section>
+
+                <!-- 播放器部分 -->
+                <section class="player-section">
+                    <div class="player-info">
+                        <div class="equalizer">
+                            <div class="bar bar1"></div>
+                            <div class="bar bar2"></div>
+                            <div class="bar bar3"></div>
+                        </div>
+                        <div class="track-details">
+                            <div class="track-name" id="current-track-name">暂无播放</div>
+                            <div class="track-status" id="current-track-status">等待点歌...</div>
+                        </div>
+                    </div>
+                    <div class="player-controls">
+                        <div class="main-controls">
+                            <button class="control-btn"><i class="fas fa-step-backward"></i></button>
+                            <button class="control-btn" id="play-pause-btn"><i class="fas fa-play"></i></button>
+                            <button class="control-btn"><i class="fas fa-step-forward"></i></button>
+                            <button class="control-btn"><i class="fas fa-stop"></i></button>
+                            <button class="control-btn"><i class="far fa-heart"></i></button>
+                            <span class="control-text">隐藏</span>
+                            <span class="control-text">收藏</span>
+                        </div>
+                        <div class="volume-control">
+                            <span class="control-text">音量</span>
+                            <input type="range" class="volume-slider" min="0" max="100" value="50" id="volume-slider">
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <span class="time-text" id="time-current">0:00</span>
+                        <div class="progress-bar-bg">
+                            <div class="progress-bar-fill" id="progress-fill"></div>
+                        </div>
+                        <span class="time-text" id="time-total">0:00</span>
+                    </div>
+                </section>
+
+                <!-- 队列标题 -->
+                <div class="section-divider">
+                    <span>播放队列</span>
+                    <span>0 首歌曲</span>
+                </div>
+
+                <!-- 直播频道 -->
+                <div class="live-channel">
+                    <div class="channel-name">
+                        <span class="hollow-dot"></span> 马仔音乐台
+                    </div>
+                    <div class="channel-status">直播</div>
+                </div>
+                <div class="connection-status">已连接到马仔音乐台服务器</div>
+            </div>
+
+            <!-- 右侧内容 -->
+            <div class="right-panel">
+                <!-- 聊天/播放记录 -->
+                <section class="chat-section" id="chat-container">
+                    <!-- 默认欢迎消息 -->
+                    <div class="chat-message dj-message">
+                        <div class="message-header">马仔</div>
+                        <div class="message-content">
+                            你好，这里是马仔音乐台。告诉我今天的心情和想听什么歌，我会为你播放。
+                        </div>
+                        <div class="message-meta">
+                            <span class="msg-time" id="welcome-time">21:00</span>
+                            <button class="replay-btn"><i class="fas fa-play"></i> 重播</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 输入区域 -->
+                <section class="input-section">
+                    <div class="input-box">
+                        <input type="text" id="song-input" placeholder="对DJ说点什么（输入歌名）..." autocomplete="off">
+                    </div>
+                    <button class="icon-btn"><i class="fas fa-microphone"></i></button>
+                    <button class="icon-btn primary" id="send-btn"><i class="fas fa-arrow-up"></i></button>
+                </section>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <span>马仔 FM.</span>
+            <span>已连接.</span>
+        </footer>
+    </div>
+
+    <!-- 隐藏的音频播放器 -->
+    <audio id="tts-player"></audio>
+    <audio id="music-player"></audio>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
