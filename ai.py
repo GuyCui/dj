@@ -18,7 +18,7 @@ client = OpenAI(
 )
 
 response = client.chat.completions.create(
-    model="gpt-4.1",
+    model="gpt-5.4",
     messages=[
         {"role": "user", "content": "介绍一下人工智能的发展历程"}
     ]
